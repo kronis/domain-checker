@@ -1,7 +1,7 @@
-
+var domaninsEndings = ['.no', '.se'];
 function getResultForDomains(domainNames) {
 	domainNames.forEach(function (domainName) {
-		['.no', '.se', '.com'].forEach(function (domaninsEnding) {
+		domaninsEndings.forEach(function (domaninsEnding) {
 			getResultForDomain(domainName, domaninsEnding);
 		});
 	});
@@ -13,8 +13,9 @@ function getResultForDomain(domainname, domaninsEnding) {
 		data:{
 			domainname: domainname.concat(domaninsEnding)
 		},
-		success: function (data) {
-			console.log(data)
+		success: function (html) {
+			var data = parseHtmlFromResponse(html);
+			updateTd(data);
 		},
 		error: function (data) {
 			console.log(data);

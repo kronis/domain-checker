@@ -1,6 +1,7 @@
 (function() {
 	function createTable(domains, tlds) {
-		var table = $('<table><thead><tr></tr></thead><tbody></tbody></table>');
+		var table = $('<table id="result-table"><thead><tr></tr></thead><tbody></tbody></table>');
+		$(table).find('thead tr').append($('<td></td>'));
 		tlds.forEach(function(tld) {
 			$(table).find('thead tr').append('<th>' + tld + '</th>');
 		});
@@ -9,20 +10,18 @@
 			var row = $('<tr id="' + domain + '"></tr>');
 			row.append($('<td>' + domain + '</td>'));
 			tlds.forEach(function(tld) {
-				row.append($('<td class="' + tld + '"></td>'));
+				row.append($('<td class="' + tld.replace('.', '') + '"></td>'));
 			});
+			table.append(row);
 		});
 		return table;
 	}
 
-	function inputParser(text) {
-		var domains = text.split(/\n/);
-		getResultForDomains(domains);
-	}
 	$('#domain-checker').bind('submit', function(e) {
 		e.preventDefault();
 		var data = $('#domain-checker').find('textarea').val();
-		inputParser(data);
-		$('body').append(createTable(data, domaninsEndings));
+		var domains = data.split(/\n/);
+		$('body').append(createTable(domains, domaninsEndings));
+		getResultForDomains(domains);
 	});
 })();
