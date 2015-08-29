@@ -1,6 +1,8 @@
 (function() {
 	function inputParser(text) {
 		var domains = text.split(/\n/);
+		getResultForDomains(domains);
+		console.log(domains);
 		// TODO : Phe
 	}
 

@@ -1,23 +1,11 @@
 
-
-var domaninsEndings = ['.no', '.se', '.com'];
-
-function getResultForDomains() {
-	var domainnames = Array.prototype.slice.call(arguments);
-	var promises = [];
-	domainnames.forEach(function (domainname) {
-		domaninsEndings.forEach(function (domaninsEnding) {
-			var promise = getResultForDomain(domainname, domaninsEnding);
-			promises.push(promise);
+function getResultForDomains(domainNames) {
+	domainNames.forEach(function (domainName) {
+		['.no', '.se', '.com'].forEach(function (domaninsEnding) {
+			getResultForDomain(domainName, domaninsEnding);
 		});
 	});
-	$.when.all(promises).then(function(schemas) {
-		console.log("DONE", this, schemas); // 'schemas' is now an array
-	}, function(e) {
-		console.log("My ajax failed");
-	});
-};
-
+}
 
 function getResultForDomain(domainname, domaninsEnding) {
 	return $.ajax({
@@ -26,7 +14,7 @@ function getResultForDomain(domainname, domaninsEnding) {
 			domainname: domainname.concat(domaninsEnding)
 		},
 		success: function (data) {
-			console.log('success', data);
+			console.log(data)
 		},
 		error: function (data) {
 			console.log(data);
@@ -36,4 +24,4 @@ function getResultForDomain(domainname, domaninsEnding) {
 
 
 
-getResultForDomains('capraconsulting', 'volvo');
+
