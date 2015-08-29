@@ -2,11 +2,13 @@
 
 
 $.ajax({
-    url: 'https://www.domeneshop.no/check.cgi?domainname=capraconsulting.no',
-    dataType: 'jsonp',
-    success: function (data) {
-       //  console.log('' + data)
-    }
+	url: '/ds/check.cgi?domainname=capraconsulting.no',
+	success: function (data) {
+		debugger;
+	}, 
+	error: function (data) {
+		debugger;
+	}
 });
 
 
