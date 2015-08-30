@@ -1,0 +1,13 @@
+th, td {
+    border: 1px #000000 solid;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td.taken {
+    color: darkred;
+}
+
+td.free {
+    color: green;
+}

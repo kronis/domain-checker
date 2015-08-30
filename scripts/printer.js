@@ -1,4 +1,5 @@
 function updateTd(data) {
-	console.log(data);
-	$('#result-table').find('td.' + data.tld).text(data.status);
+	var className = data.status === 'Not' ? 'taken' : 'free';
+	var text = data.status === 'Not' ? '-' : '\u2611';
+	$('#result-table').find('td.' + data.tld).addClass(className).text(text);
 }
