@@ -15,6 +15,7 @@ function getResultForDomain(domainname, domaninsEnding) {
 		},
 		success: function (html) {
 			var data = parseHtmlFromResponse(html);
+			saveDomain(data.domian, data.tld, html);
 			updateTd(data);
 		},
 		error: function (data) {
@@ -22,7 +23,3 @@ function getResultForDomain(domainname, domaninsEnding) {
 		}
 	});
 }
-
-
-
-
