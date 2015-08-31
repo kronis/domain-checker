@@ -17,14 +17,9 @@ function saveDomain(domain, tld, data) {
 	isDomainSaved(domain, tld, callback);
 }
 
-function getData() {
+function getData(callback) {
 	var ref = new Firebase("http://domain-checker.firebaseio.com/");
 	ref.once("value", function(snapshot) {
-		var datas = snapshot.val();
-		for (var prop in datas) {
-			console.log("o." + prop + " = " + datas[prop]);
-		}
+		callback(snapshot.val());
 	});
 }
-
-getData();

@@ -16,7 +16,7 @@ function getResultForDomain(domainname, domaninsEnding) {
 		success: function (html) {
 			var data = parseHtmlFromResponse(html);
 			saveDomain(data.domian, data.tld, html);
-			updateTd(data);
+			updateTd(data, '#result-table');
 		},
 		error: function (data) {
 			console.log(data);
