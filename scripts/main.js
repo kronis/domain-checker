@@ -14,7 +14,6 @@ function printSavedData() {
 		$('body').append(createTable(domains, tlds, 'saved-table'));
 
 		jsonArray.forEach(function(data) {
-			console.log(data);
 			updateTd(data, '#saved-table');
 		});
 	} 	
@@ -26,6 +25,8 @@ function printSavedData() {
 		e.preventDefault();
 		var data = $('#domain-checker').find('textarea').val();
 		var domains = data.split(/\n/);
+		domains = _.compact(domains);
+		domains = _.invoke(domains, 'trim');
 		$('body').append(createTable(domains, domaninsEndings, 'result-table'));
 		getResultForDomains(domains);
 	});

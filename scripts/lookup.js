@@ -1,4 +1,4 @@
-var domaninsEndings = ['.no', '.se'];
+var domaninsEndings = ['.no', '.se', '.com', '.net', '.org', '.me', '.as', '.cc', '.nu'];
 function getResultForDomains(domainNames) {
 	domainNames.forEach(function (domainName) {
 		domaninsEndings.forEach(function (domaninsEnding) {
